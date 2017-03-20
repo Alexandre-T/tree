@@ -1,0 +1,28 @@
+{
+  "name": "alexandret/tree",
+  "type": "symfony-bundle",
+  "description": "Interval tree, interval arborescence",
+  "keywords": ["interval", "tree"],
+  "homepage": "https://github.com/alexandre-t/tree",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexandre Tranchant",
+      "email": "alexandre.tranchant@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "symfony/framework-bundle": "^2.8|^3.1",
+    "phpunit/phpunit": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lex\\LexTreeBundle\\": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "target-dir": "Lex/TreeBundle"
+}
