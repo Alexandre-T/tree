@@ -1,5 +1,5 @@
 {
-  "name": "alexandret/tree",
+  "name": "lex/tree",
   "type": "symfony-bundle",
   "description": "Interval tree, interval arborescence",
   "keywords": ["interval", "tree"],
@@ -23,6 +23,5 @@
       "Lex\\LexTreeBundle\\": ""
     }
   },
-  "minimum-stability": "dev",
-  "target-dir": "Lex/TreeBundle"
+  "minimum-stability": "dev"
 }
