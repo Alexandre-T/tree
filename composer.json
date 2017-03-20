@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Lex\\LexTreeBundle\\": ""
+      "Lex\\TreeBundle\\": ""
     }
   },
   "minimum-stability": "dev"
