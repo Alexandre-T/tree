@@ -59,4 +59,4 @@ script:
 
 notifications:
   email:
-- alexandre.tranchant@gmail.com
+    - alexandre.tranchant@gmail.com
