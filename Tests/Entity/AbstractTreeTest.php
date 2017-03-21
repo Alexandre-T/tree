@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Siminteraction Application.
+ * This file is part of the Lex TreeBundle.
  *
  * PHP version 5.6
  *
@@ -9,10 +9,10 @@
  * @category  Testing
  *
  * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
- * @copyright 2015 Alexandre Tranchant
- * @license   GNU General Public License, version 3
+ * @copyright 2017 Alexandre Tranchant
+ * @license   MIT
  *
- * @link      http://opensource.org/licenses/GPL-3.0
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 
 namespace Lex\TreeBundle\Tests\Entity;
@@ -27,11 +27,13 @@ use Lex\TreeBundle\Entity\AbstractTree;
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
  * @license  GNU General Public License, version 3
  *
- * @link     http://opensource.org/licenses/GPL-3.0
+ * @see     http://opensource.org/licenses/GPL-3.0
  */
 class AbstractTreeTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * Mock for Abstract Class AbstractTree.
+     *
      * @var AbstractTree
      */
     private $tree;
@@ -77,14 +79,14 @@ class AbstractTreeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests Tree->getLevel() Tree->setLevel()
+     * Tests Tree->getLevel() Tree->setLevel().
      */
     public function testGetLevel()
     {
         $level = 15;
         $result = $this->tree->setLevel(15);
         self::assertEquals($result, $this->tree);
-        self::assertEquals($level,$this->tree->getLevel());
+        self::assertEquals($level, $this->tree->getLevel());
     }
 
     /**

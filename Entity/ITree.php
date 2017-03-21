@@ -1,68 +1,86 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: alexandre.tranchant
- * Date: 21/03/2017
- * Time: 14:45
+ * This file is part of the Lex TreeBundle.
+ *
+ * PHP version 5.6
+ *
+ * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ *
+ * @category  Entity
+ *
+ * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @copyright 2017 Alexandre Tranchant
+ * @license   MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 
 namespace Lex\TreeBundle\Entity;
 
-
+/**
+ * Tree Interface needed to be used by TreeRepository.
+ *
+ * @category Entity
+ *
+ * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @license  GNU General Public License, version 3
+ *
+ * @see     http://opensource.org/licenses/GPL-3.0
+ */
 interface ITree
 {
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId();
 
     /**
-     * Set level
+     * Set level.
      *
-     * @param integer $level
+     * @param int $level
      *
      * @return AbstractTree
      */
     public function setLevel($level);
 
     /**
-     * Get level
+     * Get level.
      *
-     * @return integer
+     * @return int
      */
     public function getLevel();
 
     /**
-     * Set left
+     * Set left born.
      *
-     * @param integer $left
+     * @param int $left
      *
      * @return AbstractTree
      */
     public function setLeft($left);
 
     /**
-     * Get left
+     * Get left born.
      *
-     * @return integer
+     * @return int
      */
     public function getLeft();
 
     /**
-     * Set right
+     * Set right born.
      *
-     * @param integer $right
+     * @param int $right
      *
      * @return AbstractTree
      */
     public function setRight($right);
 
     /**
-     * Get right
+     * Get right born.
      *
-     * @return integer
+     * @return int
      */
     public function getRight();
 }

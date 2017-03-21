@@ -1,41 +1,77 @@
 <?php
+
+/**
+ * This file is part of the Lex TreeBundle.
+ *
+ * PHP version 5.6
+ *
+ * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ *
+ * @category  Entity
+ *
+ * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @copyright 2017 Alexandre Tranchant
+ * @license   MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
+ */
+
 namespace Lex\TreeBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Abstract Tree Entity implementing ITree.
+ *
+ * @category Entity
+ *
+ * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @license  GNU General Public License, version 3
+ *
+ * @see     http://opensource.org/licenses/GPL-3.0
+ *
  * @ORM\MappedSuperclass(repositoryClass="Lex\TreeBundle\Entity\Repository\TreeRepository")
  */
 abstract class AbstractTree implements ITree
 {
     /**
+     * Identifiant.
+     *
+     * @var int
      * @ORM\Id
      * @ORM\Column(type="integer", options={"unsigned":true})
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
      */
     private $id;
 
     /**
+     * Level 1 to x.
+     *
+     * @var int
      * @ORM\Column(type="integer", nullable=false, name="dia_lvl", options={"unsigned":true})
      */
     private $level;
 
     /**
-     * 
+     * Left born.
+     *
+     * @var int
      * @ORM\Column(type="integer", nullable=false, name="dia_lb", options={"unsigned":true})
      */
     private $left;
 
     /**
-     * 
+     * Right born.
+     *
+     * @var int
      * @ORM\Column(type="integer", nullable=false, name="dia_lr", options={"unsigned":true})
      */
     private $right;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -43,9 +79,9 @@ abstract class AbstractTree implements ITree
     }
 
     /**
-     * Set level
+     * Set level.
      *
-     * @param integer $level
+     * @param int $level
      *
      * @return AbstractTree
      */
@@ -57,9 +93,9 @@ abstract class AbstractTree implements ITree
     }
 
     /**
-     * Get level
+     * Get level.
      *
-     * @return integer
+     * @return int
      */
     public function getLevel()
     {
@@ -67,9 +103,9 @@ abstract class AbstractTree implements ITree
     }
 
     /**
-     * Set left
+     * Set left.
      *
-     * @param integer $left
+     * @param int $left
      *
      * @return AbstractTree
      */
@@ -81,9 +117,9 @@ abstract class AbstractTree implements ITree
     }
 
     /**
-     * Get left
+     * Get left.
      *
-     * @return integer
+     * @return int
      */
     public function getLeft()
     {
@@ -91,9 +127,9 @@ abstract class AbstractTree implements ITree
     }
 
     /**
-     * Set right
+     * Set right.
      *
-     * @param integer $right
+     * @param int $right
      *
      * @return AbstractTree
      */
@@ -105,9 +141,9 @@ abstract class AbstractTree implements ITree
     }
 
     /**
-     * Get right
+     * Get right.
      *
-     * @return integer
+     * @return int
      */
     public function getRight()
     {

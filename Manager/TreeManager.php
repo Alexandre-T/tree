@@ -6,12 +6,13 @@
  *
  * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
  *
- * @category  Repository
+ * @category  Manager
  *
  * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
  * @copyright 2017 Alexandre Tranchant
  * @license   MIT
  *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 
 namespace Lex\TreeBundle\Service;
@@ -27,6 +28,7 @@ use Lex\TreeBundle\Entity\Repository\TreeRepository;
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
  * @license  MIT
  *
+ * https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 class TreeManager
 {
@@ -38,11 +40,13 @@ class TreeManager
     /**
      * @var TreeRepository
      */
+    private $repository;
 
     /**
      * TreeManager constructor.
      *
      * @param EntityManager $entityManager
+     * @param string        $repository
      */
     public function __construct(EntityManager $entityManager, $repository)
     {
@@ -53,7 +57,7 @@ class TreeManager
     /**
      * Save game.
      *
-     * @param $entity (the game)
+     * @param $entity (the tree)
      */
     public function save($entity)
     {
