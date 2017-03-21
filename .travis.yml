@@ -5,8 +5,8 @@ language: php
 sudo: false
 
 # Start mysql service
-services:
-    - mysql
+#services:
+#    - mysql
 
 # Cache composer packages so "composer install" is faster
 cache:
@@ -35,9 +35,9 @@ matrix:
 #env:
 #  - DB=mysql
 
-# Update composer
-before-install:
-  - composer self-update
+# Self-Update composer is no more useful
+#before-install:
+#  - composer self-update
 
 before_script:
   - composer install
@@ -50,7 +50,7 @@ before_script:
 #  - chmod -R 0777 web/uploads
 
 script:
-   - php vendor/phpunit/phpunit/phpunit phpunit.xml.dist
+   - php vendor/phpunit/phpunit/phpunit --configuration phpunit.xml.dist
 #  - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then php vendor/phpunit/phpunit/phpunit ; fi
 #  - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then php vendor/phpunit/phpunit/phpunit --coverage-clover build/logs/clover.xml; fi
 
