@@ -3,6 +3,7 @@ Représentation intervallaire des arbres
 ----
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/e8b1e0a1-da1c-4be2-9716-cc84acf1a38d/mini.png)](https://insight.sensiolabs.com/projects/e8b1e0a1-da1c-4be2-9716-cc84acf1a38d)
 [![Build Status](https://travis-ci.org/Alexandre-T/tree.svg?branch=master)](https://travis-ci.org/Alexandre-T/tree)
+[![Coverage Status](https://coveralls.io/repos/github/Alexandre-T/tree/badge.svg?branch=master)](https://coveralls.io/github/Alexandre-T/tree?branch=master)
 ----
 
 Pour éviter des autojointures et de la récursivité de requête, 
