@@ -50,12 +50,11 @@ before_script:
 #  - chmod -R 0777 web/uploads
 
 script:
-   - php vendor/phpunit/phpunit/phpunit --configuration phpunit.xml.dist
-#  - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then php vendor/phpunit/phpunit/phpunit ; fi
-#  - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then php vendor/phpunit/phpunit/phpunit --coverage-clover build/logs/clover.xml; fi
+   - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then php vendor/phpunit/phpunit/phpunit --configuration phpunit.xml.dist ; fi
+   - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then php vendor/phpunit/phpunit/phpunit --configuration phpunit.xml.dist --coverage-clover build/logs/clover.xml; fi
 
-#after_success:
-#  - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then php vendor/bin/coveralls -v; fi
+after_success:
+   - if [ "$TRAVIS_PHP_VERSION" == "7.1" ]; then php vendor/bin/coveralls -v; fi
 
 notifications:
   email:
