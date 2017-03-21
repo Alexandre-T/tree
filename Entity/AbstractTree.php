@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\MappedSuperclass(repositoryClass="Lex\TreeBundle\Entity\Repository\TreeRepository")
  */
-abstract class AbstractTree
+abstract class AbstractTree implements ITree
 {
     /**
      * @ORM\Id
