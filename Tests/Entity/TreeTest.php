@@ -45,7 +45,7 @@ class AbstractTreeTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->tree = $this->getMockForAbstractClass(Tree::class);
+        $this->tree = new Tree();
     }
 
     /**
