@@ -45,10 +45,18 @@ class Tree implements TreeInterface
     private $id;
 
     /**
+     * Name.
+     *
+     * @var string
+     * @ORM\Column(type="string", nullable=false, name="tree_name")
+     */
+    protected $name;
+
+    /**
      * Level 1 to x.
      *
      * @var int
-     * @ORM\Column(type="integer", nullable=false, name="dia_lvl", options={"unsigned":true})
+     * @ORM\Column(type="integer", nullable=false, name="tree_lvl", options={"unsigned":true})
      */
     private $level;
 
@@ -56,7 +64,7 @@ class Tree implements TreeInterface
      * Left born.
      *
      * @var int
-     * @ORM\Column(type="integer", nullable=false, name="dia_lb", options={"unsigned":true})
+     * @ORM\Column(type="integer", nullable=false, name="tree_lb", options={"unsigned":true})
      */
     private $left;
 
@@ -64,7 +72,7 @@ class Tree implements TreeInterface
      * Right born.
      *
      * @var int
-     * @ORM\Column(type="integer", nullable=false, name="dia_lr", options={"unsigned":true})
+     * @ORM\Column(type="integer", nullable=false, name="tree_lr", options={"unsigned":true})
      */
     private $right;
 
@@ -76,6 +84,30 @@ class Tree implements TreeInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name.
+     *
+     * @param string $name
+     *
+     * @return Tree
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

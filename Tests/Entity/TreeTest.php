@@ -18,7 +18,6 @@
 namespace Lex\TreeBundle\Tests\Entity;
 
 use Lex\TreeBundle\Entity\Tree;
-use Lex\TreeBundle\Entity\TreeInterface;
 
 /**
  * Interval Tree Entity test case.
@@ -30,12 +29,12 @@ use Lex\TreeBundle\Entity\TreeInterface;
  *
  * @see     http://opensource.org/licenses/GPL-3.0
  */
-class AbstractTreeTest extends \PHPUnit_Framework_TestCase
+class TreeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Mock for Abstract Class AbstractTree.
+     * Tree entity to test.
      *
-     * @var TreeInterface
+     * @var Tree
      */
     private $tree;
 
@@ -63,11 +62,23 @@ class AbstractTreeTest extends \PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         self::assertNull($this->tree->getId());
+        self::assertNull($this->tree->getName());
         self::assertNull($this->tree->getLevel());
         self::assertNull($this->tree->getLeft());
         self::assertNull($this->tree->getRight());
     }
 
+    /**
+     * Tests Tree->setName() Tree->getName().
+     */
+    public function testSetName()
+    {
+        $name = 'name';
+        $result = $this->tree->setName($name);
+        self::assertEquals($result, $this->tree);
+        self::assertEquals($name, $this->tree->getName());
+    }
+    
     /**
      * Tests Tree->setLeft() Tree->getLeft().
      */
