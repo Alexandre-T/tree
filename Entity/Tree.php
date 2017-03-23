@@ -21,7 +21,7 @@ namespace Lex\TreeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Abstract Tree Entity implementing ITree.
+ * Tree (minimum) Entity implementing ITree.
  *
  * @category Entity
  *
@@ -32,7 +32,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\MappedSuperclass(repositoryClass="Lex\TreeBundle\Entity\Repository\TreeRepository")
  */
-abstract class AbstractTree implements ITree
+class Tree implements TreeInterface
 {
     /**
      * Identifiant.
@@ -83,7 +83,7 @@ abstract class AbstractTree implements ITree
      *
      * @param int $level
      *
-     * @return AbstractTree
+     * @return TreeInterface
      */
     public function setLevel($level)
     {
@@ -107,7 +107,7 @@ abstract class AbstractTree implements ITree
      *
      * @param int $left
      *
-     * @return AbstractTree
+     * @return TreeInterface
      */
     public function setLeft($left)
     {
@@ -131,7 +131,7 @@ abstract class AbstractTree implements ITree
      *
      * @param int $right
      *
-     * @return AbstractTree
+     * @return TreeInterface
      */
     public function setRight($right)
     {

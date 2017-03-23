@@ -27,7 +27,7 @@ namespace Lex\TreeBundle\Entity;
  *
  * @see     http://opensource.org/licenses/GPL-3.0
  */
-interface ITree
+interface TreeInterface
 {
     /**
      * Get id.
@@ -41,7 +41,7 @@ interface ITree
      *
      * @param int $level
      *
-     * @return AbstractTree
+     * @return TreeInterface
      */
     public function setLevel($level);
 
@@ -57,7 +57,7 @@ interface ITree
      *
      * @param int $left
      *
-     * @return AbstractTree
+     * @return TreeInterface
      */
     public function setLeft($left);
 
@@ -73,7 +73,7 @@ interface ITree
      *
      * @param int $right
      *
-     * @return AbstractTree
+     * @return TreeInterface
      */
     public function setRight($right);
 

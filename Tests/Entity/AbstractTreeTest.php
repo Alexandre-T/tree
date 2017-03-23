@@ -17,7 +17,8 @@
 
 namespace Lex\TreeBundle\Tests\Entity;
 
-use Lex\TreeBundle\Entity\AbstractTree;
+use Lex\TreeBundle\Entity\Tree;
+use Lex\TreeBundle\Entity\TreeInterface;
 
 /**
  * Interval Tree Entity test case.
@@ -34,7 +35,7 @@ class AbstractTreeTest extends \PHPUnit_Framework_TestCase
     /**
      * Mock for Abstract Class AbstractTree.
      *
-     * @var AbstractTree
+     * @var TreeInterface
      */
     private $tree;
 
@@ -44,7 +45,7 @@ class AbstractTreeTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->tree = $this->getMockForAbstractClass(AbstractTree::class);
+        $this->tree = $this->getMockForAbstractClass(Tree::class);
     }
 
     /**

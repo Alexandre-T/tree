@@ -19,7 +19,7 @@
 namespace Lex\TreeBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Lex\TreeBundle\Entity\ITree;
+use Lex\TreeBundle\Entity\TreeInterface;
 
 /**
  * TreeRepository.
@@ -34,11 +34,11 @@ class TreeRepository extends EntityRepository
      *
      * @param string $code
      *
-     * @return ITree
+     * @return TreeInterface
      */
     public function findOneByCode($code)
     {
-        /** @var ITree $tree */
+        /** @var TreeInterface $tree */
         $tree = $this->findOneBy(['code' => $code]);
 
         return $tree;
@@ -47,11 +47,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find all Children.
      *
-     * @param ITree $parent
+     * @param TreeInterface $parent
      *
      * @return array
      */
-    public function findAllChildren(ITree $parent)
+    public function findAllChildren(TreeInterface $parent)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -72,11 +72,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find direct Children.
      *
-     * @param ITree $parent
+     * @param TreeInterface $parent
      *
      * @return array
      */
-    public function findChildren(ITree $parent)
+    public function findChildren(TreeInterface $parent)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -99,11 +99,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find complement.
      *
-     * @param ITree $element
+     * @param TreeInterface $element
      *
      * @return array
      */
-    public function findComplement(ITree $element)
+    public function findComplement(TreeInterface $element)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -124,11 +124,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find leaves.
      *
-     * @param ITree $parent
+     * @param TreeInterface $parent
      *
      * @return array
      */
-    public function findLeaves(ITree $parent = null)
+    public function findLeaves(TreeInterface $parent = null)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -158,11 +158,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find nodes.
      *
-     * @param ITree $parent
+     * @param TreeInterface $parent
      *
      * @return array
      */
-    public function findNodes(ITree $parent = null)
+    public function findNodes(TreeInterface $parent = null)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -192,11 +192,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find direct Parent.
      *
-     * @param ITree $child
+     * @param TreeInterface $child
      *
-     * @return ITree|null
+     * @return TreeInterface|null
      */
-    public function findParent(ITree $child)
+    public function findParent(TreeInterface $child)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -219,11 +219,11 @@ class TreeRepository extends EntityRepository
     /**
      * Find All Parents.
      *
-     * @param ITree $child
+     * @param TreeInterface $child
      *
      * @return array
      */
-    public function findParents(ITree $child)
+    public function findParents(TreeInterface $child)
     {
         $query = $this->createQueryBuilder('t')
             ->select('t');
@@ -244,7 +244,7 @@ class TreeRepository extends EntityRepository
     /**
      * Find Root of the ITree.
      *
-     * @return ITree|null
+     * @return TreeInterface|null
      */
     public function findRoot()
     {
