@@ -36,9 +36,27 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('lex_tree');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('tree-manager')
+                    ->children()
+                        ->scalarNode('class')
+                            ->defaultValue('Lex\TreeBundle\Manager\TreeManager')
+                            ->end()
+                        ->arrayNode('arguments')
+                            ->children()
+                                ->variableNode('entityManager')
+                                    ->defaultValue('@doctrine.orm.entity_manager')
+                                    ->end()
+                                ->scalarNode('RepositoryName')
+                                    ->defaultValue('TreeBundle:Tree')
+                                    ->end()
+                            ->end() //children of arguments
+                        ->end() //arguments
+                    ->end() //children of tree-manager
+                ->end()//tree-manager
+            ->end()//children of tree_node
+        ;
 
         return $treeBuilder;
     }

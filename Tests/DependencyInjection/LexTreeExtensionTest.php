@@ -20,6 +20,7 @@ namespace Lex\TreeBundle\Tests\DependencyInjection;
 
 use Lex\TreeBundle\DependencyInjection\LexTreeExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Tree extension unit test case.
@@ -36,13 +37,51 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * This test verify that by default the Tree Manager is loaded.
+     * @var LexTreeExtension
      */
-    public function testDefault()
+    private $extension;
+
+    public function setUp()
     {
-        $container = new ContainerBuilder();
+        parent::setUp();
+
+        $this->extension = $this->getExtension();
+    }
+    /**
+     * This test verify that by default the Tree Manager is loaded with default values.
+     */
+    public function testGetConfigWithDefaultValues()
+    {
+        $container = $this->getContainer();
         $loader = new LexTreeExtension();
         $loader->load(array(array()), $container);
-        $this->assertTrue($container->hasDefinition('lex_tree.tree-manager'), 'The Tree Manager is loaded');
+        $this->assertTrue($container->hasDefinition("lex_tree.tree-manager"));
+        $treeManagerDefinition = $container->getDefinition("lex_tree.tree-manager");
+        $this->assertEquals('Lex\TreeBundle\Manager\TreeManager', $treeManagerDefinition->getClass());
+        $reference = $treeManagerDefinition->getArgument('entityManager');
+
+        /** @var Reference $reference */
+        $this->assertInstanceOf(Reference::class, $reference);
+        $this->assertEquals('doctrine.orm.entity_manager', $reference->__toString());
+        $this->assertEquals('TreeBundle:Tree', $treeManagerDefinition->getArgument('repositoryName'));
+    }
+
+
+    /**
+     * @return LexTreeExtension
+     */
+    protected function getExtension()
+    {
+        return new LexTreeExtension();
+    }
+
+    /**
+     * @return ContainerBuilder
+     */
+    private function getContainer()
+    {
+        $container = new ContainerBuilder();
+
+        return $container;
     }
 }
