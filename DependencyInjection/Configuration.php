@@ -38,22 +38,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode('tree-manager')
-                    ->children()
-                        ->scalarNode('class')
-                            ->defaultValue('Lex\TreeBundle\Manager\TreeManager')
-                            ->end()
-                        ->arrayNode('arguments')
-                            ->children()
-                                ->variableNode('entityManager')
-                                    ->defaultValue('@doctrine.orm.entity_manager')
-                                    ->end()
-                                ->scalarNode('RepositoryName')
-                                    ->defaultValue('TreeBundle:Tree')
-                                    ->end()
-                            ->end() //children of arguments
-                        ->end() //arguments
-                    ->end() //children of tree-manager
+                ->variableNode('tree-manager')
                 ->end()//tree-manager
             ->end()//children of tree_node
         ;
