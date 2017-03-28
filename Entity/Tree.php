@@ -26,11 +26,19 @@ use Doctrine\ORM\Mapping as ORM;
  * @category Entity
  *
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
- * @license  GNU General Public License, version 3
+ * @license  MIT
  *
  * @see     http://opensource.org/licenses/GPL-3.0
  *
- * @ORM\MappedSuperclass(repositoryClass="Lex\TreeBundle\Entity\Repository\TreeRepository")
+ * @ORM\Entity(repositoryClass="Lex\TreeBundle\Entity\Repository\TreeRepository")
+ * @ORM\Table(
+ *     name="lex_tree",
+ *     indexes={
+ *         @ORM\Index(name="LevelIndex", columns={"tree_lvl","tree_lb","tree_lr"}),
+ *         @ORM\Index(name="BornIndex", columns={"tree_lb","tree_lr"}),
+ *         @ORM\Index(name="NameIndex", columns={"tree_name"})
+ *     }
+ * )
  */
 class Tree implements TreeInterface
 {

@@ -30,17 +30,14 @@ use Lex\TreeBundle\Entity\TreeInterface;
 class TreeRepository extends EntityRepository
 {
     /**
-     * Find all Children.
+     * Find one Tree by Name
      *
-     * @param string $code
-     *
+     * @param string $name
      * @return TreeInterface
      */
-    public function findOneByCode($code)
-    {
+    public function findOneByName($name){
         /** @var TreeInterface $tree */
-        $tree = $this->findOneBy(['code' => $code]);
-
+        $tree = $this->findOneBy(['name' => $name]);
         return $tree;
     }
 

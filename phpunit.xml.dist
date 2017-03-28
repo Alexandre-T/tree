@@ -6,6 +6,10 @@
          backupGlobals="false"
          colors="true"
          bootstrap="Tests/autoload.php">
+    <php>
+        <server name="KERNEL_DIR" value="./Tests/Functional/app/" />
+    </php>
+
     <testsuites>
         <testsuite name="LexTreeBundle Test Suite">
             <directory suffix="Test.php">./Tests/</directory>
@@ -22,4 +26,8 @@
             </exclude>
         </whitelist>
     </filter>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+    </listeners>
 </phpunit>

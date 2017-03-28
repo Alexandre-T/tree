@@ -5,8 +5,8 @@ language: php
 sudo: false
 
 # Start mysql service
-#services:
-#    - mysql
+services:
+    - mysql
 
 # Cache composer packages so "composer install" is faster
 cache:
@@ -32,8 +32,8 @@ matrix:
     - php: '5.6'
 
 # Define an environment variable
-#env:
-#  - DB=mysql
+env:
+  - DB=mysql
 
 # Self-Update composer is no more useful
 #before-install:
@@ -41,13 +41,11 @@ matrix:
 
 before_script:
   - composer install
-#  - cp app/config/parameters.yml.travis app/config/parameters.yml
-#  - mysql -e 'create database symfony;'
-#  - composer install #--no-interaction --prefer-source
-#  - php bin/console doctrine:migrations:migrate  --no-interaction
-#  - php bin/console doctrine:fixtures:load -n --env=test
-#  - mkdir -p build/logs
-#  - chmod -R 0777 web/uploads
+  - cp Tests/Resources/parameters.yml.travis Tests/Functional/app/config/parameters.yml
+  - mysql -e 'create database symfony;'
+  - php Tests/Functional/bin/console doctrine:migrations:migrate  --no-interaction
+  - php Tests/Functional/bin/console doctrine:fixtures:load --fixtures ./Tests/DataFixtures/ORM -n --env=test
+  - mkdir -p build/logs
 
 script:
    - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then php vendor/phpunit/phpunit/phpunit --configuration phpunit.xml.dist ; fi
