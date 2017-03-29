@@ -27,9 +27,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @category Entity
  *
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
- * @license  GNU General Public License, version 3
+ * @license  MIT
  *
- * @see     http://opensource.org/licenses/GPL-3.0
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 class LexTreeBundle extends Bundle
 {

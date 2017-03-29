@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <parser>
+        <target>doc/api</target>
+        <encoding>utf-8//IGNORE//TRANSLIT</encoding>
+        <default-package-name>Default</default-package-name>
+    </parser>
+    <transformer>
+        <target>doc/api</target>
+    </transformer>
+    <files>
+        <directory>Commands</directory>
+        <directory>DependencyInjection</directory>
+        <directory>Entity</directory>
+        <directory>Tests/DataFixtures</directory>
+        <directory>Tests/DependencyInjection</directory>
+        <directory>Tests/Entity</directory>
+        <file>Tests/Functional/AbstractKernelTestCase.php</file>
+        <file>LexTreeBundle.php</file>
+    </files>
+    <transformations>
+        <template name="clean" />
+    </transformations>
+    <logging>
+        <level>warn</level>
+        <paths>
+            <default>./var/logs/phpdoc.log</default>
+            <errors>./var/logs/phpdoc.errors.log</errors>
+        </paths>
+    </logging>
+</phpdoc>

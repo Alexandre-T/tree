@@ -1,30 +1,56 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: alexandre.tranchant
- * Date: 23/03/2017
- * Time: 15:45
+ * This file is part of the Lex TreeBundle.
+ *
+ * PHP version 5.6
+ *
+ * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ *
+ * @category  Testing
+ *
+ * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @copyright 2017 Alexandre Tranchant
+ * @license   MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
+
 namespace Lex\TreeBundle\Tests\Entity\Repository;
 
 use Lex\TreeBundle\Entity\Repository\TreeRepository;
 use Lex\TreeBundle\Entity\Tree;
 use Lex\TreeBundle\Tests\Functional\AbstractKernelTestCase;
 
+/**
+ * Tree repository functional test case.
+ *
+ * This file is testing the configuration.
+ *
+ * @category Testing
+ *
+ * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @license  MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
+ */
 class TreeRepositoryTest extends AbstractKernelTestCase
 {
     /**
+     * Doctrine Entity Manager.
+     *
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
 
     /**
+     * Tree repositoty.
+     *
      * @var TreeRepository
      */
     private $repository;
 
     /**
-     * {@inheritDoc}
+     * Prepares the environment before running a test.
      */
     protected function setUp()
     {
@@ -210,7 +236,7 @@ class TreeRepositoryTest extends AbstractKernelTestCase
         $trail = $this->repository->findOneByName('trail');
         /** @var Tree $tree */
         $trees = $this->repository->findParents($trail);
-        self::assertEquals($expected , count($trees));
+        self::assertEquals($expected, count($trees));
 
         $names = self::getNames($trees);
         self::assertContains('moto', $names);
@@ -225,11 +251,11 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     {
         $expected = $this->repository->findOneByName('transport');
         $actual = $this->repository->findRoot();
-        self::assertEquals($expected , $actual);
+        self::assertEquals($expected, $actual);
     }
 
     /**
-     * {@inheritDoc}
+     * Cleans up the environment after running a test.
      */
     protected function tearDown()
     {
@@ -247,7 +273,7 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     private static function getNames(array $trees)
     {
         $names = [];
-        foreach($trees as $tree){
+        foreach ($trees as $tree) {
             $names[]=$tree->getName();
         }
         return $names;

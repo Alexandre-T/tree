@@ -25,9 +25,9 @@ use Lex\TreeBundle\Entity\Tree;
  * @category Testing
  *
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
- * @license  GNU General Public License, version 3
+ * @license  MIT
  *
- * @see     http://opensource.org/licenses/GPL-3.0
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 class TreeTest extends \PHPUnit_Framework_TestCase
 {

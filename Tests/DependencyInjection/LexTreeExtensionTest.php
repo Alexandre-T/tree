@@ -30,17 +30,22 @@ use Symfony\Component\DependencyInjection\Reference;
  * @category Testing
  *
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
- * @license  GNU General Public License, version 3
+ * @license  MIT
  *
- * @see     http://opensource.org/licenses/GPL-3.0
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * The extension to be tested.
+     *
      * @var LexTreeExtension
      */
     private $extension;
 
+    /**
+     * Prepares the environment before running a test.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -68,6 +73,8 @@ class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
 
 
     /**
+     * Return the loader (the extension).
+     *
      * @return LexTreeExtension
      */
     private function getExtension()
@@ -76,6 +83,8 @@ class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Return the container.
+     *
      * @return ContainerBuilder
      */
     private function getContainer()

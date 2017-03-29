@@ -28,7 +28,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
  * @license  MIT
  *
- * @see     http://opensource.org/licenses/GPL-3.0
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  *
  * @ORM\Entity(repositoryClass="Lex\TreeBundle\Entity\Repository\TreeRepository")
  * @ORM\Table(

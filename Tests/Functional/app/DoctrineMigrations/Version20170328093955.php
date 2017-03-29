@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Lex TreeBundle.
+ *
+ * PHP version 5.6
+ *
+ * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ *
+ * @category  Testing
+ *
+ * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @copyright 2017 Alexandre Tranchant
+ * @license   MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
+ */
+
 namespace Lex\TreeBundle\Tests\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
@@ -7,6 +23,16 @@ use Doctrine\DBAL\Schema\Schema;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
+ *
+ * This file is creating the Mysql database schema.
+ * It is used to load test data.
+ *
+ * @category Testing
+ *
+ * @author   Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @license  MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 class Version20170328093955 extends AbstractMigration
 {

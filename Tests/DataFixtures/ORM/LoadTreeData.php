@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Lex TreeBundle.
+ *
+ * PHP version 5.6
+ *
+ * (c) Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ *
+ * @category  Testing
+ *
+ * @author    Alexandre Tranchant <alexandre.tranchant@gmail.com>
+ * @copyright 2017 Alexandre Tranchant
+ * @license   MIT
+ *
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
+ */
+
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -11,14 +27,14 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Load Dialogues test data in the database.
+ * Load Tree test data in the database.
  *
  * @category LoadDataFixture
  *
  * @author  Alexandre Tranchant <alexandre.tranchant@gmail.com>
- * @license GNU General Public License, version 3
+ * @license MIT
  *
- * @link http://opensource.org/licenses/GPL-3.0
+ * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  *
  * @codeCoverageIgnore
  */

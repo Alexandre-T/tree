@@ -35,7 +35,8 @@ class TreeRepository extends EntityRepository
      * @param string $name
      * @return TreeInterface
      */
-    public function findOneByName($name){
+    public function findOneByName($name)
+    {
         /** @var TreeInterface $tree */
         $tree = $this->findOneBy(['name' => $name]);
         return $tree;
