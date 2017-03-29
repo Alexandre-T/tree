@@ -69,6 +69,22 @@ interface TreeInterface
     public function getLeft();
 
     /**
+     * Set name.
+     *
+     * @param int $name
+     *
+     * @return TreeInterface
+     */
+    public function setName($name);
+
+    /**
+     * Get name.
+     *
+     * @return int
+     */
+    public function getName();
+
+    /**
      * Set right born.
      *
      * @param int $right
