@@ -53,7 +53,7 @@ class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
     public function testGetConfigWithDefaultValues()
     {
         $container = $this->getContainer();
-        $loader = new LexTreeExtension();
+        $loader = $this->getExtension();
         $loader->load(array(array()), $container);
         $this->assertTrue($container->hasDefinition("lex_tree.tree-manager"));
         $treeManagerDefinition = $container->getDefinition("lex_tree.tree-manager");
@@ -70,7 +70,7 @@ class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * @return LexTreeExtension
      */
-    protected function getExtension()
+    private function getExtension()
     {
         return new LexTreeExtension();
     }
