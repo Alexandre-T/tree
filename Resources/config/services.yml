@@ -1,6 +1,6 @@
 services:
      lex_tree.tree-manager:
              class: Lex\TreeBundle\Manager\TreeManager
-             arguments:
-                 entityManager: "@doctrine.orm.entity_manager"
-                 repositoryName: "TreeBundle:Tree"
+             arguments: ['@doctrine.orm.entity_manager' , "TreeBundle:Tree"]
+#                 entityManager: @doctrine.orm.entity_manager
+#                 repositoryName: "TreeBundle:Tree"

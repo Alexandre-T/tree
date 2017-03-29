@@ -58,12 +58,12 @@ class LexTreeExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasDefinition("lex_tree.tree-manager"));
         $treeManagerDefinition = $container->getDefinition("lex_tree.tree-manager");
         $this->assertEquals('Lex\TreeBundle\Manager\TreeManager', $treeManagerDefinition->getClass());
-        $reference = $treeManagerDefinition->getArgument('entityManager');
+        $reference = $treeManagerDefinition->getArgument(0);
 
         /** @var Reference $reference */
         $this->assertInstanceOf(Reference::class, $reference);
         $this->assertEquals('doctrine.orm.entity_manager', $reference->__toString());
-        $this->assertEquals('TreeBundle:Tree', $treeManagerDefinition->getArgument('repositoryName'));
+        $this->assertEquals('TreeBundle:Tree', $treeManagerDefinition->getArgument(1));
     }
 
 
