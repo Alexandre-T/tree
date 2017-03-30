@@ -31,5 +31,4 @@ use Doctrine\ORM\EntityNotFoundException;
  */
 class TreeNotFoundException extends EntityNotFoundException
 {
-
 }

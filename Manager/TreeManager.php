@@ -164,8 +164,7 @@ class TreeManager
     {
         $tree = $this->repository->find($id);
 
-        if ($tree instanceof TreeInterface)
-        {
+        if ($tree instanceof TreeInterface) {
             return $tree;
         }
         throw new TreeNotFoundException(sprintf('There is no tree with %d as id', $id));
@@ -182,8 +181,7 @@ class TreeManager
     {
         $tree = $this->repository->findOneByName($name);
 
-        if ($tree instanceof TreeInterface)
-        {
+        if ($tree instanceof TreeInterface) {
             return $tree;
         }
         throw new TreeNotFoundException(sprintf('Tree %s is non-existant', $name));
@@ -199,6 +197,4 @@ class TreeManager
         $this->entityManager->persist($tree);
         $this->entityManager->flush();
     }
-
-
 }

@@ -17,6 +17,7 @@
 
 
 namespace Manager;
+
 use Lex\TreeBundle\Entity\Tree;
 use Lex\TreeBundle\Exception\TreeNotFoundException;
 use Lex\TreeBundle\Manager\TreeManager;
