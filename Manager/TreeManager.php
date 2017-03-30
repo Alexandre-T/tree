@@ -94,4 +94,15 @@ class TreeManager
         }
         throw new TreeNotFoundException(sprintf('Tree %s is non-existant', $name));
     }
+
+    /**
+     * Save a tree interface.
+     *
+     * @param TreeInterface $tree
+     */
+    public function save(TreeInterface $tree)
+    {
+        $this->entityManager->persist($tree);
+        $this->entityManager->flush();
+    }
 }
