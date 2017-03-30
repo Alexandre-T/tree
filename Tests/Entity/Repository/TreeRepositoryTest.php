@@ -85,7 +85,7 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindOneAllChildren.
+     * Test FindAllChildren.
      */
     public function testFindAllChildren()
     {

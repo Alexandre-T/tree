@@ -68,7 +68,7 @@ class TreeRepository extends EntityRepository
     }
 
     /**
-     * Find direct Children.
+     * Find all Children.
      *
      * @param TreeInterface $parent
      *
