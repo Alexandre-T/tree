@@ -12,9 +12,13 @@
         <directory>Commands</directory>
         <directory>DependencyInjection</directory>
         <directory>Entity</directory>
+        <directory>Manager</directory>
         <directory>Tests/DataFixtures</directory>
         <directory>Tests/DependencyInjection</directory>
         <directory>Tests/Entity</directory>
+        <directory>Tests/Functional/Entity</directory>
+        <directory>Tests/Functional/Manager</directory>
+        <directory>Tests/Manager</directory>
         <file>Tests/Functional/AbstractKernelTestCase.php</file>
         <file>LexTreeBundle.php</file>
     </files>

@@ -15,16 +15,16 @@
  * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
 
-namespace Lex\TreeBundle\Tests\Entity\Repository;
 
-use Lex\TreeBundle\Entity\Repository\TreeRepository;
+namespace Lex\TreeBundle\Tests\Functional\Manager;
+
 use Lex\TreeBundle\Entity\Tree;
+use Lex\TreeBundle\Exception\TreeNotFoundException;
+use Lex\TreeBundle\Manager\TreeManager;
 use Lex\TreeBundle\Tests\Functional\AbstractKernelTestCase;
 
 /**
- * Tree repository functional test case.
- *
- * This file is testing the configuration.
+ * Tree Manager functional test.
  *
  * @category Testing
  *
@@ -33,22 +33,19 @@ use Lex\TreeBundle\Tests\Functional\AbstractKernelTestCase;
  *
  * @see https://github.com/Alexandre-T/tree/blob/master/LICENSE
  */
-class TreeRepositoryTest extends AbstractKernelTestCase
+class TreeManagerTest extends AbstractKernelTestCase
 {
     /**
-     * Doctrine Entity Manager.
-     *
-     * @var \Doctrine\ORM\EntityManager
+     * Name of the Repository
      */
-    private $entityManager;
+    const REPOSITORY = 'LexTreeBundle:Tree';
 
     /**
-     * Tree repositoty.
+     * Tree Manager to test.
      *
-     * @var TreeRepository
+     * @var TreeManager
      */
-    private $repository;
-
+    private $manager;
     /**
      * Prepares the environment before running a test.
      */
@@ -56,42 +53,31 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     {
         self::bootKernel();
 
-        $this->entityManager = static::$kernel->getContainer()
+        $entityManager = static::$kernel->getContainer()
             ->get('doctrine')
             ->getManager();
 
-        $this->repository = $this->entityManager->getRepository('LexTreeBundle:Tree');
+        $this->manager = new TreeManager($entityManager, self::REPOSITORY);
     }
 
     /**
-     * Test FindAll method.
+     * Cleans up the environment after running a test.
      */
-    public function testFindAll()
+    protected function tearDown()
     {
-        $trees = $this->repository->findAll();
-        self::assertGreaterThan(1, count($trees));
+        parent::tearDown();
+        $this->manager = null; // avoid memory leaks
     }
 
     /**
-     * Test FindOneByName.
+     * Test TreeManager->getAllChildren.
      */
-    public function testFindOneByName()
-    {
-        $expected = 'terrestre';
-        /** @var Tree $tree */
-        $tree = $this->repository->findOneByName('terrestre');
-        self::assertInstanceOf(Tree::class, $tree);
-        self::assertEquals($expected, $tree->getName());
-    }
-
-    /**
-     * Test FindAllChildren.
-     */
-    public function testFindAllChildren()
+    public function testGetAllChildren()
     {
         $expectedCount = 6;
-        $terrestre = $this->repository->findOneByName('terrestre');
-        $trees = $this->repository->findAllChildren($terrestre);
+        $terrestre = $this->manager->getByName('terrestre');
+        $trees = $this->manager->getAllChildren($terrestre);
+
         self::assertEquals($expectedCount, count($trees));
         $names = self::getNames($trees);
         self::assertContains('vélo', $names);
@@ -102,13 +88,13 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindOneChildren.
+     * Test GetOneChildren.
      */
-    public function testFindChildren()
+    public function testGetChildren()
     {
         $expectedCount = 4;
-        $terrestre = $this->repository->findOneByName('terrestre');
-        $trees = $this->repository->findChildren($terrestre);
+        $terrestre = $this->manager->getByName('terrestre');
+        $trees = $this->manager->getChildren($terrestre);
         self::assertEquals($expectedCount, count($trees));
         $names = self::getNames($trees);
         self::assertContains('vélo', $names);
@@ -118,13 +104,13 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindOneComplement.
+     * Test GetOneComplement.
      */
-    public function testFindComplement()
+    public function testGetComplement()
     {
         $expectedCount = 15;
-        $terrestre = $this->repository->findOneByName('terrestre');
-        $trees = $this->repository->findComplement($terrestre);
+        $terrestre = $this->manager->getByName('terrestre');
+        $trees = $this->manager->getComplement($terrestre);
         self::assertEquals($expectedCount, count($trees));
 
         $names = self::getNames($trees);
@@ -146,12 +132,12 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindLeaves.
+     * Test GetLeaves.
      */
-    public function testFindLeaves()
+    public function testGetLeaves()
     {
         $expectedCount = 16;
-        $trees = $this->repository->findLeaves();
+        $trees = $this->manager->getLeaves();
         self::assertEquals($expectedCount, count($trees));
 
         $names = self::getNames($trees);
@@ -174,8 +160,8 @@ class TreeRepositoryTest extends AbstractKernelTestCase
 
         //Test with a parameter
         $expectedCount = 5;
-        $terrestre = $this->repository->findOneByName('terrestre');
-        $trees = $this->repository->findLeaves($terrestre);
+        $terrestre = $this->manager->getByName('terrestre');
+        $trees = $this->manager->getLeaves($terrestre);
         self::assertEquals($expectedCount, count($trees));
 
         $names = self::getNames($trees);
@@ -187,12 +173,12 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindNodes.
+     * Test GetNodes.
      */
-    public function testFindNodes()
+    public function testGetNodes()
     {
         $expectedCount = 6;
-        $trees = $this->repository->findNodes();
+        $trees = $this->manager->getNodes();
         self::assertEquals($expectedCount, count($trees));
 
         $names = self::getNames($trees);
@@ -205,8 +191,8 @@ class TreeRepositoryTest extends AbstractKernelTestCase
 
         //Test with a parameter
         $expectedCount = 1;
-        $terrestre = $this->repository->findOneByName('terrestre');
-        $trees = $this->repository->findNodes($terrestre);
+        $terrestre = $this->manager->getByName('terrestre');
+        $trees = $this->manager->getNodes($terrestre);
         self::assertEquals($expectedCount, count($trees));
 
         $names = self::getNames($trees);
@@ -214,28 +200,27 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindParent.
+     * Test GetParent.
      */
-    public function testFindParent()
+    public function testGetParent()
     {
         //Test with a parameter
         $expected = 'moto';
-        $trail = $this->repository->findOneByName('trail');
-        /** @var Tree $tree */
-        $tree = $this->repository->findParent($trail);
+        $trail = $this->manager->getByName('trail');
+        $tree = $this->manager->getParent($trail);
         self::assertInstanceOf(Tree::class, $tree);
         self::assertEquals($expected, $tree->getName());
     }
 
     /**
-     * Test FindParent.
+     * Test GetParent.
      */
-    public function testFindParents()
+    public function testGetParents()
     {
         $expected = 3;
-        $trail = $this->repository->findOneByName('trail');
+        $trail = $this->manager->getByName('trail');
         /** @var Tree $tree */
-        $trees = $this->repository->findParents($trail);
+        $trees = $this->manager->getParents($trail);
         self::assertEquals($expected, count($trees));
 
         $names = self::getNames($trees);
@@ -245,24 +230,55 @@ class TreeRepositoryTest extends AbstractKernelTestCase
     }
 
     /**
-     * Test FindRoot.
+     * Test GetRoot.
      */
-    public function testFindRoot()
+    public function testGetRoot()
     {
-        $expected = $this->repository->findOneByName('transport');
-        $actual = $this->repository->findRoot();
+        $expected = $this->manager->getByName('transport');
+        $actual = $this->manager->getRoot();
         self::assertEquals($expected, $actual);
     }
 
     /**
-     * Cleans up the environment after running a test.
+     * Test TreeManager->getByName()
      */
-    protected function tearDown()
+    public function testGetByName()
     {
-        parent::tearDown();
+        /** @var Tree $terrestre */
+        $terrestre = $this->manager->getByName('terrestre');
+        self::assertInstanceOf(Tree::class, $terrestre);
+        self::assertEquals('terrestre', $terrestre->getName());
+    }
 
-        $this->entityManager->close();
-        $this->entityManager = null; // avoid memory leaks
+    /**
+     * Test TreeManager->testGetByName with non existent entity().
+     */
+    public function testGetByNameWithNonExistentEntity()
+    {
+        self::expectExceptionMessage('Tree abcd is non-existant');
+        self::expectException(TreeNotFoundException::class);
+        $this->manager->getByName('abcd');
+    }
+
+    /**
+     * Test TreeManager->getById().
+     */
+    public function testGetById()
+    {
+        $expected = $this->manager->getByName('terrestre');
+        $actual = $this->manager->getById($expected->getId());
+        self::assertInstanceOf(Tree::class, $actual);
+        self::assertSame($expected, $actual);
+    }
+
+    /**
+     * Test TreeManager->getById() with non existent entity.
+     */
+    public function testGetByIdWithNonExistentEntity()
+    {
+        self::expectExceptionMessage('There is no tree with -1 as id');
+        self::expectException(TreeNotFoundException::class);
+        $this->manager->getById('-1');
     }
 
     /**
